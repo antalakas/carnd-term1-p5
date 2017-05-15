@@ -49,11 +49,14 @@ def detection_cli():
         fl.project_video()
 
     if args.imgd:
-        det = Detection(base_directory)
-        det.execute_image_pipeline(True)
+        det = Detection(base_directory, small=False)
+        det.classifier_pipeline()
+        det.single_image_pipeline()
+        # det.do_job(sampling=False)
 
     if args.vidd:
-        det = Detection(base_directory)
+        det = Detection(base_directory, small=False)
+        det.classifier_pipeline()
         det.project_video()
 
 if __name__ == "__main__":
