@@ -144,7 +144,9 @@ Final rectangles are drawn over the original image having their center calculate
 I found in references that the HOG method is around since 2005, also the lesson somehow leads to choose HOG as the method of implementation for the project. Probably, integrating 
 more features based on histogram and color in the feature vector could improve the accuracy. It seems to me that current implementation is not fast enough and i could do better limiting 
 the number of sliding windows. Also, simply producing a video based on the pipeline described was not smooth, in `detection.py, line 58, function add_bbox_history` the set window rectangles
-is added to frame history (value of 10 was selected for the previous frames used) and the final heatmap calculated for the image is taking all these bocxes into account with a 
-variable threshold `detection.py, line 169`. In the video the white car detection is lost for sub-second time, this means that the scale and overlap of the sliding windows 
+is added to frame history (value of 10 was selected for the previous frames used) and the final heatmap calculated for the image is taking all these boxes into account. I had problems 
+deciding about the threshold to use, i used constant values like 10 or 5 depending on the history depth, in the end i used variable threshold `detection.py, line 169` 
+(as described here https://github.com/jeremy-shannon/CarND-Vehicle-Detection/blob/master/vehicle_detection_project.ipynb). 
+In the video the white car detection is lost for sub-second time, this means that the scale and overlap of the sliding windows 
 can be improved. Scales lower than 1.0 for the sliding window output more false positives, probably further optimizing the classifier as well as using more training images could improve 
 the detection further in the line of sight. I also had a look in the YOLO implementation, probably this is the way to go, but still it is well worth understanding the classic methods.
