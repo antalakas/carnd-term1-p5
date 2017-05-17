@@ -88,14 +88,20 @@ with little modifications, supposing that i use 'ALL' three hog channels
 
 ![alt text][image2]
 
-Scale 1.5
+Scale 1.0
+
 ![alt text][image3]
 
-Scale 2.0
+Scale 1.5
+
 ![alt text][image4]
 
-Scale 3.5
+Scale 2.0
+
 ![alt text][image5]
+
+Scale 3.5
+
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
@@ -118,21 +124,27 @@ Please also note that i integrated findlane andvehicle detection [in this video]
 The pipeline works as follows:
 
 The original image
+
 ![alt text][image6]
 
 find_cars outputs predictions (I recorded the positions of positive detections in each frame of the video.)
+
 ![alt text][image7]
 
 A heatmap is calculated for the image, based on the fact that the predictions included multiple rectangles in overlapping positions
+
 ![alt text][image8]
 
 The heatmap is thresholded, in the specific example threshold=2, which means that we persist output if at least 2 overlapping rectangles exist over a specific area
+
 ![alt text][image9]
 
 I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.
+
 ![alt text][image10]
 
 Final rectangles are drawn over the original image having their center calculated over the labels (class Painter, in painter.py, function draw_labeled_bboxes)
+
 ![alt text][image11]
 
 ---
