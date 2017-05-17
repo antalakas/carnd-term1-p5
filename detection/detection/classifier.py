@@ -43,7 +43,8 @@ class Classifier(object):
         self.cars = glob.glob(path_cars)
         self.notcars = glob.glob(os.path.join(self.path, 'non-vehicles\**\*' + self.extension))
 
-        print(len(self.cars), len(self.notcars))
+        print('Cars', len(self.cars))
+        print ('Non-Cars', len(self.notcars))
 
     def extract_features(self, color_space='RGB',
                  orient=9, pix_per_cell=8, cell_per_block=2, hog_channel=0):

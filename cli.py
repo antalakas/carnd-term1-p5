@@ -52,12 +52,12 @@ def detection_cli():
         det = Detection(base_directory, small=False)
         det.classifier_pipeline()
         det.single_image_pipeline()
-        # det.do_job(sampling=False)
 
     if args.vidd:
-        det = Detection(base_directory, small=False)
+        fl = FindLane(base_directory)
+        det = Detection(base_directory, small=False, findlane=fl)
         det.classifier_pipeline()
-        det.project_video()
+        det.project_video_with_findlane()
 
 if __name__ == "__main__":
 
